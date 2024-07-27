@@ -1,12 +1,12 @@
-#ifndef xw_dht_H
-#define xw_dht_H
+#ifndef DHT_H
+#define DHT_H
 
 #include <Arduino.h>
 
-class xw_dht
+class DHT
 {
 public:
-    enum dht_type : uint8_t
+    enum Type : uint8_t
     {
         DHT11, 
         DHT22
@@ -16,15 +16,15 @@ public:
     {
         float temperature;
         float huminity;
-    }dht_result; 
+    }Result; 
 
 
-    xw_dht(uint8_t data_pin, dht_type type);
-    dht_result read(); 
+    DHT(uint8_t data_pin, dht_type type);
+    Result read(); 
 
 private:
-    void send_request(); 
-    dht_result decode(); 
+    void sendRequest(); 
+    Result decode(); 
     bool check();
 
     dht_type _type; 

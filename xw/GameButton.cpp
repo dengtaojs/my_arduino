@@ -1,12 +1,12 @@
-#include "GameDirectionButton.h"
+#include "GameButton.h"
 
-GameDirectionButton::GameDirectionButton(uint8_t xPin, uint8_t yPin, uint8_t zPin)
+GameButton::GameButton(uint8_t xPin, uint8_t yPin, uint8_t zPin)
     :_xPin{xPin}, _yPin{yPin}, _zPin{zPin}
 {
     _lastDirection = Direction::Idle;
 }
 
-void GameDirectionButton::init()
+void GameButton::init()
 {
     pinMode(_xPin, INPUT); 
     pinMode(_yPin, INPUT); 
@@ -14,14 +14,14 @@ void GameDirectionButton::init()
     analogReadResolution(10); 
 }
 
-bool GameDirectionButton::Pressed(Direction direction)
+bool GameButton::Pressed(Direction direction)
 {
     auto currentDirection = GetState(); 
     auto result = _lastDirection == Direction::Idle && currentDirection == direction; 
     return result; 
 }
 
-GameDirectionButton::Direction GameDirectionButton::GetState()
+GameButton::Direction GameButton::GetState()
 {   int zValue = digitalRead(_zPin); 
     int xValue = analogRead(_xPin); 
     int yValue = analogRead(_yPin); 
@@ -42,7 +42,7 @@ GameDirectionButton::Direction GameDirectionButton::GetState()
     return Direction::Idle; 
 }
 
-void GameDirectionButton::Update()
+void GameButton::Update()
 {
     _lastDirection = GetState(); 
 }

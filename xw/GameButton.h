@@ -1,11 +1,11 @@
-#if !defined(GAMEDIRECTIONBUTTON_H)
-#define GAMEDIRECTIONBUTTON_H
+#if !defined(GameButton_H)
+#define GameButton_H
 
 #include <Arduino.h>
 
 
 
-class GameDirectionButton
+class GameButton
 {
 public:
     enum Direction : uint8_t
@@ -17,7 +17,7 @@ public:
         Down, 
         ZPressed
     };
-    GameDirectionButton(uint8_t xPin, uint8_t yPin, uint8_t zPin);
+    GameButton(uint8_t xPin, uint8_t yPin, uint8_t zPin);
     void init(); 
     bool Pressed(Direction direction); 
     void Update();
@@ -32,4 +32,4 @@ private:
 
 
 
-#endif // GAMEDIRECTIONBUTTON_H
+#endif // GameButton_H

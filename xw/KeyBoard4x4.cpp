@@ -1,6 +1,6 @@
-#include "keyboard4x4.h"
+#include "xw_KeyBoard4x4.h"
 
-keyboard4x4::keyboard4x4(uint8_t row_pins[4], uint8_t col_pins[4])
+KeyBoard4x4::KeyBoard4x4(uint8_t row_pins[4], uint8_t col_pins[4])
 {
     for (int i = 0; i < 4; ++i)
     {
@@ -14,7 +14,7 @@ keyboard4x4::keyboard4x4(uint8_t row_pins[4], uint8_t col_pins[4])
     }
 }
 
-void keyboard4x4::init()
+void KeyBoard4x4::init()
 {
     for (int i = 0; i < 4; ++i)
     {
@@ -27,7 +27,7 @@ void keyboard4x4::init()
     }
 }
 
-char keyboard4x4::getKeyChar(char chardata[16], char defaultChar)
+char KeyBoard4x4::getKeyChar(char chardata[16], char defaultChar)
 {
     scan(); 
     for(int i = 0; i < 16; ++i)
@@ -39,7 +39,7 @@ char keyboard4x4::getKeyChar(char chardata[16], char defaultChar)
     return defaultChar; 
 }
 
-void keyboard4x4::scan()
+void KeyBoard4x4::scan()
 {
     for(int r = 0; r < 4; ++r)
     {

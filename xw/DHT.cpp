@@ -1,17 +1,17 @@
-#include "xw_dht.h"
+#include "DHT.h"
 
-xw_dht::xw_dht(uint8_t data_pin, dht_type type)
+DHT::DHT(uint8_t data_pin, dht_type type)
     : _data_pin{data_pin}, _type{type}
 {
 }
 
-xw_dht::dht_result xw_dht::read()
+DHT::Result DHT::read()
 {
-    send_request(); 
+    sendRequest(); 
     return decode(); 
 }
 
-void xw_dht::send_request()
+void DHT::sendRequest()
 {
     noInterrupts();
     pinMode(_data_pin, OUTPUT); 
@@ -51,12 +51,12 @@ void xw_dht::send_request()
     }
 }
 
-xw_dht::dht_result xw_dht::decode()
+DHT::Result DHT::decode()
 {
     if(!check())
-        return dht_result{NAN, NAN}; 
+        return Result{NAN, NAN}; 
 
-    dht_result result;
+    Result result;
     int16_t huminity, temperature; 
 
     switch (_type)
@@ -76,7 +76,7 @@ xw_dht::dht_result xw_dht::decode()
     return result; 
 }
 
-bool xw_dht::check()
+bool DHT::check()
 {
     uint16_t sum = _data[0] + _data[1] + _data[2] + _data[3]; 
     return (sum & 0x00ff) == _data[4]; 
