@@ -1,17 +1,17 @@
-#include "xwen_dht.h"
+#include "xw_dht.h"
 
-xwen_dht::xwen_dht(uint8_t data_pin, dht_type type)
+xw_dht::xw_dht(uint8_t data_pin, dht_type type)
     : _data_pin{data_pin}, _type{type}
 {
 }
 
-xwen_dht::dht_result xwen_dht::read()
+xw_dht::dht_result xw_dht::read()
 {
     send_request(); 
     return decode(); 
 }
 
-void xwen_dht::send_request()
+void xw_dht::send_request()
 {
     noInterrupts();
     pinMode(_data_pin, OUTPUT); 
@@ -51,7 +51,7 @@ void xwen_dht::send_request()
     }
 }
 
-xwen_dht::dht_result xwen_dht::decode()
+xw_dht::dht_result xw_dht::decode()
 {
     if(!check())
         return dht_result{NAN, NAN}; 
@@ -76,7 +76,7 @@ xwen_dht::dht_result xwen_dht::decode()
     return result; 
 }
 
-bool xwen_dht::check()
+bool xw_dht::check()
 {
     uint16_t sum = _data[0] + _data[1] + _data[2] + _data[3]; 
     return (sum & 0x00ff) == _data[4]; 

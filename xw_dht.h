@@ -1,9 +1,9 @@
-#ifndef XWEN_DHT_H
-#define XWEN_DHT_H
+#ifndef xw_dht_H
+#define xw_dht_H
 
 #include <Arduino.h>
 
-class xwen_dht
+class xw_dht
 {
 public:
     enum dht_type : uint8_t
@@ -19,7 +19,7 @@ public:
     }dht_result; 
 
 
-    xwen_dht(uint8_t data_pin, dht_type type);
+    xw_dht(uint8_t data_pin, dht_type type);
     dht_result read(); 
 
 private:
