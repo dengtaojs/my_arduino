@@ -1,4 +1,4 @@
-#include "GameButton.h"
+#include "Xuanwen.GameButton.h"
 
 GameButton::GameButton(uint8_t xPin, uint8_t yPin, uint8_t zPin)
     :_xPin{xPin}, _yPin{yPin}, _zPin{zPin}
@@ -11,7 +11,6 @@ void GameButton::init()
     pinMode(_xPin, INPUT); 
     pinMode(_yPin, INPUT); 
     pinMode(_zPin, INPUT_PULLUP); 
-    analogReadResolution(10); 
 }
 
 bool GameButton::Pressed(Direction direction)

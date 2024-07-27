@@ -1,6 +1,6 @@
-#include "DHT.h"
+#include "Xuanwen.DHT.h"
 
-DHT::DHT(uint8_t data_pin, dht_type type)
+DHT::DHT(uint8_t data_pin, Type type)
     : _data_pin{data_pin}, _type{type}
 {
 }

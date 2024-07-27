@@ -19,7 +19,7 @@ public:
     }Result; 
 
 
-    DHT(uint8_t data_pin, dht_type type);
+    DHT(uint8_t data_pin, Type type);
     Result read(); 
 
 private:
@@ -27,7 +27,7 @@ private:
     Result decode(); 
     bool check();
 
-    dht_type _type; 
+    Type _type; 
     uint8_t _data_pin; 
     uint8_t _data[5]; 
 };
